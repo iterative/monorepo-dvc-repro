@@ -335,9 +335,4 @@ df2.to_csv("table.csv")
  
  
  
- 
- 
- 
- 
- 
- 
+print('24933-1381')
