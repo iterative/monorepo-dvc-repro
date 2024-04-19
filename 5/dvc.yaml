@@ -1,0 +1,9 @@
+stages:
+  generate_table:
+    cmd: python script.py
+    params:
+    - seed
+    deps:
+    - script.py
+    outs:
+    - table.csv
