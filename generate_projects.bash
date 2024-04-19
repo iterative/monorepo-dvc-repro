@@ -1,7 +1,7 @@
-N=100
+N=$1
 
-for i in $( seq 0 $N); do
-    mkdir project-$i
+for i in $( seq 1 $N); do
+    mkdir -p project-$i
     cp script.py project-$i/script.py
     cp dvc.yaml project-$i/dvc.yaml
     echo " " >> script.py
