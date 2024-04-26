@@ -1,10 +1,9 @@
-# store credentials in an .env fine, don't forget to gitignore it!
-ifneq (,$(wildcard ./.env))
-    include .env
-    export
-endif
+# path to the shared DVC cache used by all projects
+DVC_SHARED_CACHE_PATH=../dvc_shared_cache
+# URL of the DVC remote used in all projects in the monorepo
+DVC_REMOTE_URL=gs://dvc-cse/example-tempus
 
-.PHONY: help venv
+.PHONY: help venv dvc_project
 
 # HELP
 # This will output the help for each task
@@ -18,7 +17,12 @@ venv: ## set up a simple python virtual environment and install requirements
 	&& python3 -m pip install --upgrade pip wheel \
 	&& python3 -m pip install -r requirements.txt
 
-s3_credentials: ## uses the AWS S3 credentials in the .env file to store them in a local (ignored by git) config file for DVC
+dvc_project: ## creates and initializes a dvc project, links it to a shared cache and a DVC remote, call by `projectdir=<name of your project directory> make dvc_project`
 	source .venv/bin/activate \
-	&& dvc remote modify --local storage secret_access_key $(AWS_SECRET_ACCESS_KEY) \
-	&& dvc remote modify --local storage access_key_id $(AWS_ACCESS_KEY_ID)
+	&& mkdir -p $(projectdir) \
+	&& cd $(projectdir) \
+	&& dvc init --subdir \
+	&& dvc cache dir $(DVC_SHARED_CACHE_PATH) \
+	&& dvc config cache.shared group \
+	&& dvc config cache.type symlink \
+	&& dvc remote add -d myremote $(DVC_REMOTE_URL)

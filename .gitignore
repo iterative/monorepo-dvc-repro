@@ -1,2 +1,4 @@
 .env
 .venv/
+dvc_shared_cache/*
+!dvc_shared_cache/.gitkeep
