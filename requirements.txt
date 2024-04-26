@@ -1,5 +1,5 @@
 pandas
 numpy
-dvc
+dvc[gs]
 dvclive
 ipykernel
