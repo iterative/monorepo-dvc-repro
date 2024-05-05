@@ -1,0 +1,32 @@
+schema: '2.0'
+stages:
+  generate_table:
+    cmd: python script.py
+    deps:
+    - path: script.py
+      hash: md5
+      md5: 0514ba972d393ea088c45cf5407c1a0a
+      size: 544
+    params:
+      params.yaml:
+        seed: 11370
+    outs:
+    - path: table.csv
+      hash: md5
+      md5: fa206ad9d7035943bed5b45c11e4006f
+      size: 186
+  create_plots:
+    cmd: python save_scatter_plot.py
+    deps:
+    - path: save_scatter_plot.py
+      hash: md5
+      md5: 1eaeec3fa4ae0f756fb3dcf855cc95d0
+      size: 358
+    params:
+      params.yaml:
+        seed: 11370
+    outs:
+    - path: scatter.csv
+      hash: md5
+      md5: 73636a633f57652fa568ff1e1e715c80
+      size: 128

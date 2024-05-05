@@ -1,0 +1,15 @@
+stages:
+  generate_table:
+    cmd: python script.py
+    params:
+    - seed
+    deps:
+    - script.py
+    outs:
+    - table.csv
+  create_plots:
+    cmd: python save_plot.py
+    deps:
+    - save_plot.py
+plots:
+  - plots/images

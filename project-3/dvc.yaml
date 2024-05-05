@@ -1,0 +1,23 @@
+stages:
+  generate_table:
+    cmd: python script.py
+    params:
+    - seed
+    deps:
+    - script.py
+    outs:
+    - table.csv
+  create_plots:
+    cmd: python save_scatter_plot.py
+    deps:
+    - save_scatter_plot.py
+    params:
+    - seed
+    outs:
+    - scatter.csv
+plots:
+  - scatter.csv: # plot ID
+      x: x
+      y: y
+      title: "My scatter plot"  # optional, otherwise path/to/dvc.yaml::plot_id
+      template: scatter

@@ -1,0 +1,24 @@
+schema: '2.0'
+stages:
+  generate_table:
+    cmd: python script.py
+    deps:
+    - path: script.py
+      hash: md5
+      md5: ddfaf3a637cfa7a4dbd48b55987934e3
+      size: 545
+    params:
+      params.yaml:
+        seed: 19715
+    outs:
+    - path: table.csv
+      hash: md5
+      md5: aab4c61c3f9d367c56579383f171ab00
+      size: 181
+  create_plots:
+    cmd: python save_plot.py
+    deps:
+    - path: save_plot.py
+      hash: md5
+      md5: cf40847ae6b69c348a129b0649b2477e
+      size: 333

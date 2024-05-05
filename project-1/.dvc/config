@@ -1,0 +1,8 @@
+[cache]
+    dir = ../../dvc_shared_cache
+    shared = group
+    type = symlink
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = gs://dvc-cse/example-tempus

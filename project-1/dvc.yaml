@@ -1,0 +1,15 @@
+stages:
+  generate_table:
+    cmd: python script.py
+    params:
+    - seed
+    deps:
+    - script.py
+    outs:
+    - table.csv
+  log_dvclive:
+    cmd: python dvclive_script.py
+    deps:
+    - dvclive_script.py
+plots:
+- dvclive/plots/images

@@ -1,0 +1,24 @@
+schema: '2.0'
+stages:
+  generate_table:
+    cmd: python script.py
+    deps:
+    - path: script.py
+      hash: md5
+      md5: bc93728c1f92ad6a9fcf28505e1b38e1
+      size: 545
+    params:
+      params.yaml:
+        seed: 15469
+    outs:
+    - path: table.csv
+      hash: md5
+      md5: debdc62c54f34a3576a03b171f0f36de
+      size: 189
+  log_dvclive:
+    cmd: python dvclive_script.py
+    deps:
+    - path: dvclive_script.py
+      hash: md5
+      md5: c22938521c7e5eb705259d399e2fe334
+      size: 375
